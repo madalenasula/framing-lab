@@ -1,0 +1,9 @@
+name = "framing-lab-api"
+main = "worker/src/index.mjs"
+compatibility_date = "2026-11-01"
+workers_dev = true
+
+[vars]
+# EXACT site origin (no path, no trailing slash), e.g. https://madalena.github.io
+ALLOWED_ORIGIN = "https://REPLACE-USERNAME.github.io"
+# APPS_SCRIPT_URL is set with: npx wrangler secret put APPS_SCRIPT_URL
