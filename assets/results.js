@@ -1,4 +1,4 @@
-/* Published results are withheld until the study is closed and counts clear a disclosure gate. */
+/* Published results are withheld until the study is closed. */
 (async()=>{
   'use strict';
   const $=id=>document.getElementById(id);
