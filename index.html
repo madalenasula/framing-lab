@@ -4,130 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f4f0">
-  <meta name="description" content="Framing Lab: a thirty-second interactive experiment about reference prices and perceived value, created by Madalena Sula.">
-  <title>Framing Lab — What feels worth it?</title>
-  <style>
-    :root {
-      --page: #f7f4f0;
-      --white: #fffefa;
-      --ink: #302a2c;
-      --muted: #777073;
-      --plum: #49313b;
-      --rose: #b7808c;
-      --blush: #e9d8d6;
-      --border: #e7e0dd;
-      --shadow: 0 22px 48px rgba(60,37,42,.055);
-    }
-    *, *::before, *::after {box-sizing:border-box}
-    html { scroll-behavior:smooth }
-    body { margin:0; background:var(--page); color:var(--ink); font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif; -webkit-font-smoothing:antialiased; }
-    button, input {font:inherit}
-    button {cursor:pointer}
-    button:disabled {cursor:not-allowed;opacity:.65}
-    :focus-visible {outline:3px solid var(--rose);outline-offset:4px}
-    [hidden] {display:none!important}
-    .container { width:min(1320px, calc(100% - 104px)); margin:0 auto; }
-    .eyebrow { text-transform:uppercase; letter-spacing:.155em; font-weight:750; font-size:10px; line-height:1.5; }
-    .header { height:90px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #ded7d3; gap:22px; }
-    .wordmark {text-decoration:none; color:var(--ink); font-size:27px; letter-spacing:-.09em; font-weight:850; line-height:1; white-space:nowrap}
-    .wordmark .period {color:var(--rose)}
-    .navcenter {display:flex; align-items:center; gap:10px; color:#71676a; font-size:11px; font-weight:750; letter-spacing:.10em; text-transform:uppercase; }
-    .navcenter .divider {height:15px;width:1px;background:#c8bdb9;margin:0 5px}
-    .navright {font-size:12px; color:var(--muted); white-space:nowrap}
-    .hero {display:grid; grid-template-columns:minmax(0, 1.25fr) minmax(260px, .55fr); align-items:end; column-gap:70px; padding:62px 0 50px}
-    .hero .eyebrow { color:#936975; display:flex; align-items:center; gap:12px; }
-    .hero .eyebrow:before {content:''; width:29px;height:1px;background:#a77c85}
-    h1 {margin:18px 0 0; font-size:clamp(53px, 6.8vw, 100px); letter-spacing:-.082em; line-height:.97; font-weight:800}
-    h1 .soft { color:#aa7f89; }
-    .heroaside {padding-bottom:7px;}
-    .heroaside p {font-size:17px; line-height:1.55; max-width:340px; letter-spacing:-.02em; margin:0 0 22px;}
-    .heroaside .helper {display:flex;align-items:center;gap:10px; color:var(--muted); font-size:11px;letter-spacing:.045em}
-    .helper-circle {width:20px;height:20px; border:1px solid #bfaeb1; display:grid;place-items:center;border-radius:50%;font-size:12px;color:#80616b}
-    .experience {display:grid; grid-template-columns:1.04fr .96fr; gap:16px; align-items:stretch}
-    .visual {border-radius:28px; position:relative; min-height:640px; overflow:hidden; isolation:isolate; background: radial-gradient(ellipse at 52% 44%, #e6cbd0 0%, #dec5c8 42%, #d3b8bd 85%, #cfb5ba 100%);}
-    .visual:before {content:''; position:absolute; width:85%; height:88%; border:1.5px solid rgba(255,255,255,.35); border-radius:49% 49% 46% 46% / 41% 41% 41% 41%; left:8%;top:6%; transform:rotate(-13deg);}
-    .visual:after {content:'';position:absolute; width:680px;height:680px; border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.15),transparent 69%);left:50%;top:38%;transform:translate(-50%,-50%);pointer-events:none}
-    .corner {position:absolute; z-index:4;left:34px;right:34px;top:32px;display:flex;align-items:center;justify-content:space-between;gap:20px;color:#5c444d}
-    .corner .pill {border:1px solid rgba(69,48,56,.38); background:rgba(255,255,255,.14);padding:10px 14px;border-radius:100px;letter-spacing:.105em;font-size:10px;font-weight:700;text-transform:uppercase}
-    .visual svg {display:block;position:absolute;top:50%;left:50%;width:min(92%,610px);height:auto;max-height:92%;transform:translate(-50%,-49%);filter:drop-shadow(28px 27px 22px rgba(64,43,50,.14));}
-    .visualbottom {position:absolute;z-index:5;bottom:34px;left:36px;right:34px;display:flex;justify-content:space-between;align-items:end;gap:22px;color:#4f3d44}
-    .visualbottom b {font-size:20px;letter-spacing:-.055em;line-height:1.1;font-weight:780;display:block;margin-top:7px}
-    .visualbottom small {font-size:10px;letter-spacing:.11em;text-transform:uppercase;font-weight:750;line-height:1.7;text-align:right}
-    .panel {border-radius:28px;background:var(--white);padding:44px clamp(35px,4vw,68px) 42px;display:flex;flex-direction:column;justify-content:center;box-shadow:var(--shadow);min-width:0}
-    .stephead {display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:31px}
-    .stephead .eyebrow {color:#99747e}
-    .progress {background:#f2eceb;border-radius:100px;font-size:10px;letter-spacing:.08em;font-weight:800;color:#6d555d;text-transform:uppercase;padding:9px 12px}
-    h2 {font-size:clamp(38px,3.45vw,54px);letter-spacing:-.068em;line-height:1.04;font-weight:780;margin:0 0 16px}
-    .description {font-size:15px;line-height:1.65;color:#716b6b;margin:0 0 31px;max-width:420px}
-    .reference {border-radius:19px;background:#f2e5e4;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:19px 23px;margin:0 0 30px;min-height:100px}
-    .reference-label {color:#866974;font-size:11px;line-height:1.45;font-weight:750;letter-spacing:.09em;text-transform:uppercase;max-width:135px}
-    .reference-value {font-size:clamp(37px,4vw,53px);font-weight:780;letter-spacing:-.072em;white-space:nowrap;color:#5c4049;line-height:1}
-    .question {display:block;font-size:16px;font-weight:750;line-height:1.4;letter-spacing:-.03em;margin:0 0 13px}
-    .input-wrap {border:1px solid #d9d1ce;background:#fff;display:flex;align-items:center;border-radius:14px;min-height:75px;overflow:hidden;transition:border .18s,box-shadow .18s}
-    .input-wrap:focus-within {border-color:#8e6875;box-shadow:0 0 0 3px rgba(169,127,140,.14)}
-    .currency {font-size:16px;font-weight:750;padding-left:22px;color:#6c6163}
-    .input-wrap input {background:transparent;border:0;outline:0;width:100%;min-width:0;font-size:28px;font-weight:650;letter-spacing:-.055em;color:var(--ink);padding:18px 20px;appearance:textfield}
-    .input-wrap input::placeholder {font-size:15px;font-weight:400;letter-spacing:0;color:#aea5a4}
-    input::-webkit-inner-spin-button,input::-webkit-outer-spin-button {-webkit-appearance:none;margin:0}
-    .hint {color:#8e8787;font-size:11px;line-height:1.5;margin:10px 0 21px}
-    .submit {background:var(--plum);border:1px solid var(--plum);color:#fff;border-radius:100px;min-height:62px;padding:16px 22px 16px 28px;width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;font-size:15px;font-weight:750;letter-spacing:-.015em;transition:transform .18s, background .18s;}
-    .submit:hover:not(:disabled) {background:#654653;transform:translateY(-1px)}
-    .submit .arrow {background:rgba(255,255,255,.17);width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:18px;font-weight:400}
-    .error {min-height:17px;color:#9d3d4d;font-size:12px;line-height:1.5;margin:10px 0 0}
-    .fine {font-size:10.5px;line-height:1.55;color:#938b8b;margin:11px 0 0}
-    .complete h2 {margin-bottom:23px}
-    .complete .description {margin-bottom:20px}
-    .complete p {font-size:14px;line-height:1.7;color:#716b6b}
-    .complete p strong {color:var(--ink)}
-    .answer-tile {background:#f2e5e4;border-radius:18px;padding:22px 25px;margin:3px 0 14px}
-    .answer-tile span {display:block;color:#866974;font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase}
-    .answer-tile strong {display:block;color:#553c46;font-size:51px;letter-spacing:-.07em;margin-top:5px}
-    .disclose {font-size:11px!important;line-height:1.5!important;color:#8f8787!important}
-    .retry {align-self:flex-start;border:0;color:#563945;background:transparent;border-bottom:1px solid #563945;font-size:13px;font-weight:750;padding:0 0 5px;margin-top:5px}
-    .after {display:grid;grid-template-columns:1fr 1.25fr;gap:80px;align-items:start;padding:86px 0 80px}
-    .after h3 {font-size:clamp(35px,4vw,58px);font-weight:770;line-height:1.04;letter-spacing:-.07em;margin:18px 0 0}
-    .after h3 span {color:#a77986}
-    .after-intro {font-size:15px;color:#746d70;line-height:1.65;max-width:440px;margin:19px 0 0}
-    .method {margin:0;padding:0;list-style:none;}
-    .method li {display:grid;grid-template-columns:34px 1fr;gap:20px;border-top:1px solid #d7cfcd;padding:23px 0}
-    .method li:last-child {border-bottom:1px solid #d7cfcd}
-    .method .num {font-size:11px;font-weight:750;color:#967a81;margin-top:2px}
-    .method strong {display:block;font-size:15px;font-weight:750;letter-spacing:-.025em}
-    .method p {font-size:13px;color:#80777a;line-height:1.55;margin:8px 0 0}
-    .footer {display:flex;justify-content:space-between;gap:15px;align-items:center;padding:24px 0 36px;border-top:1px solid #ded7d3;color:#8a8181;font-size:10px;text-transform:uppercase;letter-spacing:.09em;font-weight:700}
-    .footer a {color:inherit}
-    @media (max-width:1040px){
-      .container{width:min(100% - 64px, 1320px)}
-      .hero{grid-template-columns:1fr 270px;gap:35px}
-      .experience{grid-template-columns:1fr 1fr;gap:12px}
-      .visual{min-height:570px}.panel{padding:37px 31px}
-      h2{font-size:42px}.reference{padding:17px}.reference-value{font-size:42px}
-    }
-    @media (max-width:900px){
-      .container{width:calc(100% - 36px)}
-      .header{height:72px}.wordmark{font-size:25px}.navcenter{display:none}.navright{font-size:10px}
-      .hero{grid-template-columns:1fr;gap:23px;padding:40px 0 33px}
-      h1{font-size:clamp(53px,12vw,86px)}.heroaside p{max-width:520px;font-size:16px;margin-bottom:12px}
-      .experience{grid-template-columns:1fr;gap:12px}
-      .visual{min-height:480px}.visual svg{max-width:500px;width:86%}
-      .panel{padding:35px 31px 36px}
-      .after{grid-template-columns:1fr;gap:27px;padding:64px 0 60px}
-      .footer{align-items:flex-start;flex-direction:column;line-height:1.6}
-    }
-    @media (max-width:430px){
-      .container{width:calc(100% - 28px)}.navright{font-size:10px}
-      .hero{padding:34px 0 26px}h1{font-size:clamp(49px,11.5vw,64px)}
-      .heroaside p{font-size:15px}
-      .visual{min-height:385px;border-radius:22px}.visual svg{width:90%;top:49%}
-      .corner{top:22px;left:21px;right:21px}.corner .pill{padding:8px 10px;font-size:9px}
-      .visualbottom{left:22px;right:22px;bottom:21px}.visualbottom b{font-size:18px}.visualbottom small{font-size:8px}
-      .panel{border-radius:22px;padding:32px 24px 30px}
-      h2{font-size:40px}.description{font-size:14px;margin-bottom:23px}
-      .stephead{margin-bottom:25px}.reference{padding:17px 16px;min-height:89px;margin-bottom:25px}.reference-value{font-size:38px}.reference-label{font-size:10px}
-      .input-wrap{min-height:66px}.submit{min-height:58px}
-    }
-    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
-  </style>
+  <meta name="description" content="Framing Lab: an interactive shopping decision and a transparent behavioral research project by Madalena Sula.">
+  <title>Framing Lab — A shopping decision</title>
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
   <div class="container">
@@ -139,12 +18,12 @@
 
     <section class="hero" aria-labelledby="title">
       <div>
-        <div class="eyebrow">An experiment in perceived value</div>
-        <h1 id="title">What feels<br><span class="soft">worth it?</span></h1>
+        <div class="eyebrow">A thirty-second shopping question</div>
+        <h1 id="title">Would you<br><span class="soft">buy it?</span></h1>
       </div>
       <div class="heroaside">
-        <p>One everyday object. One question. A little insight into how we decide what things are worth.</p>
-        <div class="helper"><span class="helper-circle" aria-hidden="true">↗</span> 30 seconds &nbsp; · &nbsp; No right answers</div>
+        <p>Imagine you are choosing an everyday item. See the product, consider the price and tell us what you would pay.</p>
+        <div class="helper"><span class="helper-circle" aria-hidden="true">↗</span> 30 seconds &nbsp; · &nbsp; No purchase required</div>
       </div>
     </section>
 
@@ -183,29 +62,43 @@
         </div>
       </section>
 
-      <section id="experiment" class="panel" aria-labelledby="question-heading">
+      <section id="loading" class="panel" aria-live="polite">
+        <div class="stephead"><span class="eyebrow">Preparing your question</span><span class="progress">Experiment 001</span></div>
+        <h2>One moment.</h2>
+        <p class="loading-note" id="loading-message">Preparing your product scenario…</p>
+        <button class="retry" id="retry-init" type="button" hidden>Retry connection</button>
+      </section>
+      <section id="experiment" class="panel" aria-labelledby="question-heading" hidden>
         <div class="stephead"><span class="eyebrow">01 / Your turn</span><span class="progress">30-sec experiment</span></div>
-        <h2 id="question-heading">How much would<br>you pay?</h2>
-        <p class="description">Imagine buying this unbranded, reusable stainless-steel bottle. It has a leak-proof lid and keeps your drink cold for 24 hours.</p>
-        <div class="reference" aria-label="Hypothetical reference price"><span class="reference-label">Illustrative<br>reference price*</span><strong id="anchor" class="reference-value">CHF —</strong></div>
+        <h2 id="question-heading">What would you<br>pay for it?</h2>
+        <p class="description">Consider this unbranded 750 ml insulated stainless-steel bottle. It has a leak-proof lid and keeps drinks cold for up to 24 hours. No purchase is involved.</p>
+        <div class="reference" aria-label="Example listed price for this scenario"><span class="reference-label">Example<br>listed price*</span><strong id="anchor" class="reference-value">CHF —</strong></div>
         <form id="response-form">
-          <label class="question" for="wtp">Your maximum willingness to pay</label>
+          <label class="question" for="wtp">What is the most you would personally pay?</label>
           <div class="input-wrap"><span class="currency">CHF</span><input id="wtp" type="number" min="0" max="250" step="1" inputmode="numeric" autocomplete="off" placeholder="Enter an amount" aria-describedby="limits" required></div>
           <p class="hint" id="limits">Whole francs, from 0 to 250. Trust your first instinct.</p>
-          <button type="submit" class="submit" id="submit"><span>Submit my answer</span><span class="arrow" aria-hidden="true">↗</span></button>
+          <button type="submit" class="submit" id="submit"><span>Reveal the experiment</span><span class="arrow" aria-hidden="true">↗</span></button>
           <p id="error" class="error" role="alert"></p>
-          <p class="fine" id="fine">*Hypothetical reference price, not an actual retail offer. No name or email requested. One response per browser.</p>
+          <p class="fine" id="fine">*This is a fictional shopping scenario. The price is not a real retail offer. No payment, name or email is requested. One response per browser profile.</p>
         </form>
       </section>
 
       <section id="completed" class="panel complete" hidden aria-live="polite">
         <div class="stephead"><span class="eyebrow">02 / The reveal</span><span class="progress">Experiment 001</span></div>
-        <h2>It was never<br>just the bottle.</h2>
-        <p class="description">You saw <strong id="observed-anchor"></strong> as a hypothetical reference price. Other visitors may see a different number beside the very same product.</p>
-        <div class="answer-tile"><span>Your answer</span><strong id="observed-wtp"></strong></div>
-        <p><strong>Why this matters.</strong> A higher first number may change the value we assign to something. Comparing responses across the two random groups can help us examine that possibility.</p>
-        <p id="receipt" class="disclose"></p>
-        <button type="button" class="retry" id="retry" hidden>Preview the other version ↗</button>
+        <h2>Same bottle.<br>Different price.</h2>
+        <p class="description">You saw <strong id="observed-anchor"></strong> as an example listed price. Another randomly assigned group sees a different price for the exact same bottle.</p>
+        <div class="comparison" aria-label="Experimental price conditions">
+          <div class="compare-item"><small>Group A</small><strong>CHF 45</strong></div>
+          <div class="compare-item"><small>Group B</small><strong>CHF 95</strong></div>
+        </div>
+        <div class="answer-tile"><span>Your stated willingness to pay</span><strong id="observed-wtp"></strong></div>
+        <p><strong>The research question:</strong> Does the example price change what people say they would pay? A single response cannot establish whether your judgment was influenced. We'll compare independently assigned groups.</p>
+        <p id="receipt" class="disclose" role="status"></p>
+        <div class="reveal-actions">
+          <a href="#understory" id="method-link">How the experiment works</a>
+          <a href="results.html" id="results-link" hidden>See study status</a>
+          <button type="button" class="retry" id="retry" hidden>Preview other version</button>
+        </div>
       </section>
     </main>
 
@@ -213,103 +106,18 @@
       <div>
         <span class="eyebrow" style="color:#96737e">Behind the experiment</span>
         <h3>Same object.<br><span>Different context.</span></h3>
-        <p class="after-intro">A simple behavioural experiment exploring reference-price anchoring and stated willingness to pay.</p>
+        <p class="after-intro">We test whether a price shown next to an identical product changes stated willingness to pay. Price may also convey product-quality information; the experiment cannot distinguish these mechanisms.</p>
       </div>
       <ol class="method">
         <li><span class="num">01</span><div><strong>Two reference prices</strong><p>Visitors are randomly shown CHF 45 or CHF 95. The bottle, description and question remain unchanged.</p></div></li>
         <li><span class="num">02</span><div><strong>One response</strong><p>Each person enters their stated maximum willingness to pay in CHF. The averages and medians can then be compared.</p></div></li>
-        <li><span class="num">03</span><div><strong>A hypothesis, not a verdict</strong><p>This is an exploratory, self-selected online experiment. It cannot establish a representative population effect on its own.</p></div></li>
+        <li><span class="num">03</span><div><strong>A hypothesis, not a verdict</strong><p>This is an exploratory, self-selected hypothetical shopping experiment—not a test of real purchases, a representative population, or proof that any individual was anchored.</p></div></li>
       </ol>
     </section>
 
     <footer class="footer"><span>FRAMING LAB / BY MADALENA SULA</span><span>An independent experiment · Not affiliated with any product brand</span></footer>
   </div>
-  <script>
-  (() => {
-    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxng_XSMblEV9Dp0FEme9IyoOHiWFsikfYJdVgxUIp8unIBnpRpX5TZUZsqfKOb7sDvTQ/exec';
-    const EXPERIMENT = 'framing-lab-v1';
-    const PRICES = { low: 45, high: 95 };
-    const demo = new URLSearchParams(location.search).get('demo') === '1';
-    const connected = /^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(ENDPOINT);
-    const preview = demo || !connected;
-    const key = EXPERIMENT + ':';
-    const safeStorage = {
-      get(k) { try { return localStorage.getItem(key + k); } catch { return null; } },
-      set(k, v) { try { localStorage.setItem(key + k, v); } catch {} }
-    };
-    const randomArm = () => {
-      if (globalThis.crypto && crypto.getRandomValues) {
-        const b = new Uint32Array(1);
-        crypto.getRandomValues(b);
-        return b[0] < 2147483648 ? 'low' : 'high';
-      }
-      return Math.random() < .5 ? 'low' : 'high';
-    };
-    const uuid = () => (globalThis.crypto && crypto.randomUUID) ? crypto.randomUUID() :
-      'visitor-' + Date.now() + '-' + Math.random().toString(36).slice(2);
-    const $ = id => document.getElementById(id);
-    let arm = safeStorage.get('arm');
-    if (arm !== 'low' && arm !== 'high') { arm = randomArm(); safeStorage.set('arm', arm); }
-    let participantId = safeStorage.get('participantId');
-    if (!participantId) { participantId = uuid(); safeStorage.set('participantId', participantId); }
-    $('anchor').textContent = 'CHF ' + PRICES[arm];
-    if (preview) $('fine').textContent = '*Hypothetical reference price. Preview only — your response will not be sent. You can view both conditions after submitting.';
-
-    function showCompleted(wtp, wasSent) {
-      $('experiment').hidden = true;
-      $('completed').hidden = false;
-      $('observed-anchor').textContent = 'CHF ' + PRICES[arm];
-      $('observed-wtp').textContent = 'CHF ' + wtp;
-      $('receipt').textContent = preview ? 'Preview only — no response was collected.' :
-        (wasSent ? 'Your response was sent. Google Sheets storage must be checked separately.' : 'This browser has already submitted a response.');
-      $('retry').hidden = !preview;
-      $('understory').hidden = false;
-    }
-    if (!preview) {
-      const prev = safeStorage.get('completed');
-      if (prev !== null && /^\d+$/.test(prev)) showCompleted(Number(prev), false);
-    }
-    $('response-form').addEventListener('submit', async ev => {
-      ev.preventDefault();
-      const number = Number($('wtp').value);
-      if ($('wtp').value.trim() === '' || !Number.isInteger(number) || number < 0 || number > 250) {
-        $('error').textContent = 'Enter a whole amount between CHF 0 and 250.';
-        return;
-      }
-      $('error').textContent = '';
-      $('submit').disabled = true;
-      $('submit').firstElementChild.textContent = 'Submitting…';
-      if (!preview) {
-        const payload = { experiment: EXPERIMENT, participantId, arm, anchor: PRICES[arm], wtp: number };
-        try {
-          // Apps Script does not expose CORS headers; the opaque response cannot prove storage.
-          await fetch(ENDPOINT, {
-            method: 'POST', mode: 'no-cors',
-            headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
-            body: JSON.stringify(payload), redirect: 'follow'
-          });
-          safeStorage.set('completed', String(number));
-        } catch {
-          $('error').textContent = 'The request could not be sent. Please try again.';
-          $('submit').disabled = false;
-          $('submit').firstElementChild.textContent = 'Submit my answer';
-          return;
-        }
-      }
-      showCompleted(number, !preview);
-    });
-    $('retry').addEventListener('click', () => {
-      arm = arm === 'low' ? 'high' : 'low';
-      $('anchor').textContent = 'CHF ' + PRICES[arm];
-      $('wtp').value = '';
-      $('completed').hidden = true;
-      $('understory').hidden = true;
-      $('experiment').hidden = false;
-      $('submit').disabled = false;
-      $('submit').firstElementChild.textContent = 'Submit my answer';
-      $('wtp').focus();
-    });
-  })();
-  </script>
+  <script src="config.js"></script>
+  <script src="assets/app.js" defer></script>
 </body>
 </html>
