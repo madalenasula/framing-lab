@@ -20,7 +20,7 @@
       const closed=r.status==='closed';
       setStatus(closed?'Closed · insufficient data':'Collecting responses',
         closed?'Results are not yet publishable':'The experiment is underway.',
-        closed?'Group results are withheld because one or both groups did not reach the publication threshold. This is not a statistical-power criterion.':'To avoid influencing new participants, group averages and comparisons are not shown while data collection is open. This page will share results after the study closes and disclosure criteria are met.');
+        closed?'Group results are withheld because one or both groups did not reach the publication threshold. This is not a statistical-power criterion.':'To avoid influencing new participants, group averages and comparisons are not shown while data collection is open.');
     } else {
       setStatus('Study closed · results available','The two groups have been compared.',
         'These are descriptive findings from a self-selected, hypothetical online experiment.');
