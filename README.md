@@ -1,4 +1,4 @@
-# Framing Lab — Experiment 001 (v2)
+# Framing Lab — Experiment 1
 
 **Explore whether a price shown beside an identical product changes the maximum amount people say they would pay.**
 
