@@ -55,6 +55,24 @@ test('events are deduplicated; closed results can be published',()=>{
   const e={experiment:'framing-lab-v2',action:'event',participantId:id,name:'experiment_viewed'};
   assert.equal(h.post(e).ok,true);assert.equal(h.post(e).duplicate,true);
   h.context.V2_STATUS='closed';
+  assert.equal(h.post({experiment:'framing-lab-v2',action:'assign',participantId:id}).ok,true);
   assert.equal(h.post({experiment:'framing-lab-v2',action:'assign'}).ok,false);
   assert.equal(h.get('results').published,false);
+});
+test('closed study publishes only thresholded real aggregate data',()=>{
+  const h=harness();
+  const as=h.storage;
+  // Trigger header creation; replace with deterministic balanced test data.
+  h.post({experiment:'framing-lab-v2',action:'assign'});
+  const ids=as.get('V2_Assignments');
+  for(let i=0;i<40;i++){
+    const id='participant-test-'+String(i).padStart(4,'0');
+    ids.appendRow([new Date(),id,i<20?'low':'high',i<20?45:95]);
+    h.post({experiment:'framing-lab-v2',action:'submit',participantId:id,wtp:i<20?20:40});
+  }
+  h.context.V2_STATUS='closed';
+  const r=h.get('results');
+  assert.equal(r.published,true);assert.equal(r.summary.meanDifference,20);
+  assert.equal(r.summary.low.n,20);assert.equal(r.summary.high.n,20);
+  assert.deepEqual(Array.from(r.summary.low.hist),[0,20,0,0,0,0]);
 });
