@@ -1,10 +1,10 @@
-# Framing Lab — Experiment 01
+# Framing Lab — Marketing Experiment - 1
 
 A self-contained, interactive consumer-psychology experiment exploring the effect of hypothetical reference prices on **stated willingness to pay**.
 
 ## Design
 
-An original visual identity influenced by the restraint and athletic clarity of Oner Active and the softly rounded, blush-and-taupe product world of Rhode. No proprietary marks, logos, photography, or product assets from either brand are used. The unbranded bottle is a custom vector illustration in `index.html`. The same object and question are displayed to both randomized groups.
+An original visual influenced by the Brands Oner Active and Rhode. No proprietary marks, logos, photography, or product assets from either brand are used. The unbranded bottle is a custom vector illustration in `index.html`. The same object and question are displayed to both randomized groups.
 
 ## Experiment
 
