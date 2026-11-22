@@ -25,12 +25,16 @@
   <header class="header"><a href="./" class="wordmark">framing lab<span class="period">.</span></a><div class="navcenter">EXPERIMENT 001 / METHOD</div><a class="navright" href="results.html">STUDY STATUS</a></header>
   <main class="prose">
     <span class="eyebrow" style="color:#96737e">The thinking behind Framing Lab</span>
-    <h1>Why we built<br><span class="soft">this experiment.</span></h1>
-    <p class="intro">In marketing, the price shown beside a product is more than a number. It might influence expectations, convey quality, or change the way a customer makes a valuation. Framing Lab makes one of those questions testable.</p>
-    <h2>01 / The question</h2>
+    <h1>Why I built<br><span class="soft">this experiment.</span></h1>
+    <p class="intro">Marketing and Consumer Psychology are fascinating! A price is more than a number.<p>
+    <p>It can signal quality, establish a reference point, and influence how consumers evaluate a product.Decades of research in consumer psychology and marketing<p> 
+    <p>have examined these relationships. Tversky and Kahneman (1974) demonstrated how numerical anchors influence judgments, while Rao and Monroe (1989) documented the<p>
+    <p>relationship between price and perceived quality.Building on this research, Framing Lab explores a specific question: When people see different example prices for the same product, does their stated willingness to pay change? The experiment doesn't assume an effect.<p> 
+    <p>It tests whether one appears in our sample.</p>
+    <h2>The question</h2>
     <p>For an identical hypothetical insulated bottle, does showing an example listed price of CHF 95 rather than CHF 45 change the maximum amount people say they would pay?</p>
     <p>We hypothesize that the higher reference-price condition will have a higher average stated willingness to pay. The hypothesis is not the result; an unchanged or opposite difference is an informative possibility.</p>
-    <h2>02 / The setup</h2>
+    <h2>The setup</h2>
     <dl class="protocol">
       <dt>Population</dt><dd>Self-selected visitors to this public web experiment, not a representative Swiss sample</dd>
       <dt>Random assignment</dt><dd>50/50 server-side assignment to CHF 45 or CHF 95, persisted for each anonymous participant ID</dd>
@@ -40,10 +44,10 @@
       <dt>Data hygiene</dt><dd>Only server-confirmed saves; one immutable recorded answer per participant ID, failed and invalid submissions excluded</dd>
       <dt>Study status</dt><dd>Version 2 is separate from version 1. The start date, stopping rule, and when they were documented should be recorded transparently in the study protocol.</dd>
     </dl>
-    <h2>03 / What counts as evidence?</h2>
+    <h2>What counts as evidence?</h2>
     <p>We will compare group counts and WTP distributions, means and medians, then quantify uncertainty around the mean difference. Random assignment supports a comparison within people who participated, but the result doesn't automatically generalize to all shoppers.</p>
     <p>Results are not exposed during active collection, to reduce the chance of influencing new respondents. Even when public results are released, they will remain explicitly descriptive and exploratory.</p>
-    <h2>04 / What this cannot tell us</h2>
+    <h2>What this experiment doesn't tell us</h2>
     <ul>
       <li>A hypothetical answer is not equivalent to spending real money.</li>
       <li>Example listed prices may convey quality information rather than generate pure anchoring bias.</li>
@@ -51,12 +55,11 @@
       <li>Browser storage is not a strong identity mechanism; motivated participants could create multiple IDs.</li>
       <li>We do not claim any commercial conversion or revenue uplift from this experiment.</li>
     </ul>
-    <h2>05 / Why this is a product project</h2>
+    <h2>This is a product project, not a recommendation for a real-world architecture</h2>
     <p>Building the interface is only one part. The product work includes narrowing the question, preserving an unbiased first interaction, making the server—not the browser—authoritative for assignment, verifying submissions, specifying measurements, and communicating uncertainty.</p>
-    <p>It is also an intentionally small system: static frontend on GitHub Pages, a Cloudflare Worker connecting a JSON API, and Google Apps Script storing response data in Google Sheets. That minimizes setup while acknowledging limits around quotas, public endpoints and fraud resistance.</p>
-    <h2>06 / From marketing question to business test</h2>
-    <p>If a difference appears in this hypothetical study, a sensible next experiment would use actual purchasable products with truthful and legally compliant price cues, measuring conversion, contribution margin and customer trust. The current experiment cannot replace that test.</p>
-    <div class="note"><strong>Study transparency.</strong> This page describes the v2 experiment design, not a claim that a statistically meaningful result already exists. The earlier v1 results are preserved separately and will not be pooled into v2.</div>
+    <p>It is also an intentionally small system: static frontend on GitHub Pages, a Cloudflare Worker connecting a JSON API, and Google Apps Script storing response data in Google Sheets. That minimizes the setup.</p>
+    <h2>From a marketing question to a product test</h2>
+    <p>If we would be working with real-world business data and this test would be part of work with a brand: We would conduct an experiment with purchasable products which would have truthful and legally compliant price cues, measuring conversion, contribution margin and customer trust. The current experiment cannot replace that test. It showcases how a marketing question can be turned into a hypothesis with a testing framework.</p>
     <a class="back" href="results.html">View study status and findings</a>
   </main>
   <footer class="footer"><span>FRAMING LAB / BY MADALENA SULA</span><span>Independent product and consumer-behavior research project</span></footer>
