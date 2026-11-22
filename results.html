@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f4f0">
+  <meta name="description" content="Framing Lab: research status, aggregate results and methodology for the reference-price experiment.">
+  <title>Results & Insights — Framing Lab</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    .results-hero{max-width:840px;padding:78px 0 35px}
+    .results-hero h1{font-size:clamp(51px,7.2vw,92px)}
+    .lead{font-size:18px;line-height:1.65;color:#71686c;max-width:620px}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
+    .stat{border:1px solid var(--border);border-radius:20px;background:var(--white);padding:26px 24px}
+    .stat-label{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#876a74;font-weight:750}
+    .stat-value{display:block;font-size:clamp(27px,3vw,39px);letter-spacing:-.06em;font-weight:800;margin:13px 0 5px}
+    .stat-note{color:var(--muted);font-size:12px}
+    .results-panel{border:1px solid var(--border);background:var(--white);border-radius:24px;padding:37px;margin:26px 0}
+    .results-panel h2{font-size:clamp(29px,3vw,43px);margin-bottom:18px}
+    .results-panel p{font-size:15px;line-height:1.7;color:#71676b;max-width:760px}
+    .status{display:inline-block;border-radius:100px;padding:10px 14px;background:#f0e4e2;color:#624951;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+    .chart-key{display:flex;gap:25px;font-size:12px;color:#796b70;margin:18px 0;flex-wrap:wrap}
+    .swatch{width:11px;height:11px;border-radius:100%;display:inline-block;margin-right:7px;background:#b7808c}
+    .swatch.high{background:#4b333e}
+    .bucket{display:grid;grid-template-columns:77px 1fr;align-items:center;gap:14px;margin:15px 0}
+    .bucket label{font-size:12px;color:#796d71}
+    .bars{display:flex;flex-direction:column;gap:5px}
+    .bar{min-width:2px;border-radius:4px;height:12px}
+    .bar.low{background:#b7808c}.bar.high{background:#4b333e}
+    .bar-group{display:flex;align-items:center;gap:10px;font-size:11px;color:#846c74}
+    .bar-group span{min-width:30px}
+    .insight{background:#f1e4e2;border-radius:20px;padding:23px 27px;margin-top:20px;color:#62454f;line-height:1.6}
+    .results-link{color:#563945;text-decoration:underline;text-underline-offset:4px;font-weight:700}
+    .body-sections{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:35px 0 90px}
+    .body-sections article{background:var(--white);padding:28px;border-radius:20px}
+    .body-sections h3{font-size:22px;letter-spacing:-.035em}
+    .body-sections p,.body-sections li{color:#71686c;font-size:13px;line-height:1.7}
+    .body-sections ul{padding-left:19px}
+    @media(max-width:700px){.stats{grid-template-columns:1fr}.body-sections{grid-template-columns:1fr}.results-hero{padding:48px 0 12px}.results-panel{padding:25px 20px}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="./" class="wordmark" aria-label="Framing Lab home">framing lab<span class="period">.</span></a>
+      <div class="navcenter"><span>EXPERIMENT 001</span><span class="divider"></span><span>RESULTS</span></div>
+      <a class="navright results-link" href="./">Return to experiment</a>
+    </header>
+    <main>
+      <section class="results-hero">
+        <span class="eyebrow" style="color:#96737e">Experiment 001 / Pricing context</span>
+        <h1>What did we<br><span class="soft">discover?</span></h1>
+        <p class="lead">An independent, exploratory comparison of stated willingness to pay after two different example prices for the exact same bottle.</p>
+      </section>
+      <section id="results-panel" class="results-panel" aria-live="polite">
+        <span id="status" class="status">Checking study status</span>
+        <h2 id="status-heading" style="margin-top:25px">Loading results…</h2>
+        <p id="status-text">Connecting to the experiment.</p>
+        <div id="study-count" hidden>
+          <div class="stats">
+            <div class="stat"><span class="stat-label">Completed responses</span><strong id="n-total" class="stat-value">—</strong><span class="stat-note">Across both randomized groups</span></div>
+            <div class="stat"><span class="stat-label">Low reference price</span><strong id="n-low" class="stat-value">—</strong><span class="stat-note">CHF 45 shown</span></div>
+            <div class="stat"><span class="stat-label">High reference price</span><strong id="n-high" class="stat-value">—</strong><span class="stat-note">CHF 95 shown</span></div>
+          </div>
+        </div>
+        <div id="study-findings" hidden>
+          <h2>Average stated willingness to pay</h2>
+          <div class="stats">
+            <div class="stat"><span class="stat-label">Low reference group</span><strong id="mean-low" class="stat-value">—</strong><span class="stat-note">Mean WTP</span></div>
+            <div class="stat"><span class="stat-label">High reference group</span><strong id="mean-high" class="stat-value">—</strong><span class="stat-note">Mean WTP</span></div>
+            <div class="stat"><span class="stat-label">High minus low</span><strong id="mean-effect" class="stat-value">—</strong><span class="stat-note">Mean difference in CHF</span></div>
+          </div>
+          <p id="confidence"></p>
+          <h2 style="font-size:28px;margin-top:35px">How were answers distributed?</h2>
+          <div class="chart-key"><span><i class="swatch"></i>CHF 45 group</span><span><i class="swatch high"></i>CHF 95 group</span></div>
+          <div id="histogram" role="img" aria-label="Response histogram by price condition"></div>
+          <div class="insight" id="interpretation"></div>
+        </div>
+      </section>
+      <section class="body-sections">
+        <article>
+          <h3>What was tested?</h3>
+          <p>Visitors were randomly assigned an example listed price of CHF 45 or CHF 95 for an otherwise identical hypothetical bottle. Each supplied a maximum amount in Swiss francs.</p>
+          <p><a class="results-link" href="methodology.html">Read the full method and product decisions</a></p>
+        </article>
+        <article>
+          <h3>What doesn't this prove?</h3>
+          <ul>
+            <li>Reported amounts are not actual purchases.</li>
+            <li>Self-selected website visitors are not representative of Swiss shoppers.</li>
+            <li>Price can signal quality, not only cause anchoring.</li>
+            <li>Any observed difference needs uncertainty and selection-bias assessment.</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+    <footer class="footer"><span>FRAMING LAB / BY MADALENA SULA</span><span>Study v2 · Aggregate results only · No individual answers published</span></footer>
+  </div>
+  <script src="config.js"></script>
+  <script src="assets/results.js" defer></script>
+</body>
+</html>

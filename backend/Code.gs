@@ -89,13 +89,13 @@ function v2Events_() {
 }
 
 function v2Assign_(data) {
-  if (V2_STATUS !== 'collecting') return {ok:false,error:'Study is closed'};
   if (data.participantId != null && !v2ValidateId_(data.participantId))
     return {ok:false,error:'Invalid participant ID'};
   return v2Locked_(function() {
     var sh = v2Assignments_();
     var known = data.participantId && v2Find_(v2Rows_(sh), data.participantId);
     if (known) return {ok:true,participantId:known[1],arm:known[2],anchor:Number(known[3]),reused:true};
+    if (V2_STATUS !== 'collecting') return {ok:false,error:'Study is closed'};
     var arm = Math.random() < 0.5 ? 'low' : 'high';
     var id = Utilities.getUuid();
     sh.appendRow([new Date(), id, arm, V2_REFERENCE_PRICES[arm]]);
